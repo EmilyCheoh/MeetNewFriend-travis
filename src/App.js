@@ -2,7 +2,7 @@ import 'firebase/database';
 import './App.css';
 import 'rbx/index.css';
 import 'firebase/auth';
-import { firebase, storage } from './shared/firebase.js'
+import { firebase } from './shared/firebase.js'
 import React, { useState, useEffect } from 'react';
 import RestaurantList from "./components/RestaurantList";
 import HeaderBar from "./components/HeaderBar";
@@ -19,20 +19,6 @@ const App = () => {
 	const [user, setUser] = useState(null);
 	const [initialRender, setInitialRender] = useState(true);
 	const [schedule, setSchedule] = useState({ title: '', events: [], People: [] });
-	const [currPage, setCurrPage] = useState("login");
-
-
-	const handleLogout = () => {
-		firebase
-			.auth()
-			.signOut()
-			.then(() => {
-				alert("Successfully signed out.");
-			})
-			.catch(() => {
-				alert("Couldn't log out. Try again.");
-			});
-	};
 
 
 	useEffect(() => {

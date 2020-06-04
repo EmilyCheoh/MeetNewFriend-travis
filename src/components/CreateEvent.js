@@ -15,12 +15,6 @@ import { storage, firebase } from '../shared/firebase'
 import { confirmAlert } from 'react-confirm-alert';
 
 
-function myFunction() {
-    var x = document.getElementById("create_event_popup");
-
-    x.style.display = "none";
-    
-}
 
 const CreateEvent = (host, props) => {
 
@@ -44,15 +38,15 @@ const CreateEvent = (host, props) => {
                             console.log("World!");
                             console.log("before submit", url);
                             var time_start = "00:00";
-                            if (data["time-start"] != undefined) {
+                            if (data["time-start"] !== undefined) {
                                 time_start = String(data["time-start"]["_d"]);
                                 var arr = time_start.split(" ");
                                 time_start = arr[4].substring(0, 5);
                             }
                             var time_end = "00:00";
-                            if (data["time-end"] != undefined) {
+                            if (data["time-end"] !== undefined) {
                                 time_end = String(data["time-end"]["_d"]);
-                                var arr = time_end.split(" ");
+                                arr = time_end.split(" ");
                                 time_end = arr[4].substring(0, 5);
                             }
                             var date = data["date"];
