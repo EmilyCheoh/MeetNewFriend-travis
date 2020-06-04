@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Container, ButtonGroup, Button, Card, Field, Label } from "rbx";
-import 'firebase/database';
-import 'firebase/auth';
 import React from 'react';
 import { Card, Label } from "rbx";
+import 'firebase/database';
+import 'firebase/auth';
+
 
 const Profile = ({ person, people }) => {
 

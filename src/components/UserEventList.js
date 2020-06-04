@@ -1,7 +1,5 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import Restaurant from './Restaurant/Restaurant';
-
 
 
 
@@ -31,7 +29,6 @@ const UserEventList = ({ name, events, people }) => {
     };
 
     console.log(hostedRestaurants(events))
-
 
     return (
         <React.Fragment>

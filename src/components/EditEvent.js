@@ -36,12 +36,12 @@ const EditEvent = (props) => {
     const end = time1.split("-")[1]
 
 
-    const [RestName, setRestName] = useState(name);
-    const [desc, setDescription] = useState(description1)
-    const [cuis, setCuisine] = useState(cuisine1)
-    const [tag1, setTag] = useState(tag)
-    const [groups, setGroupSize] = useState(size1)
-    const [times, setTime1] = useState(time1)
+    // const [RestName,setRestName] = useState(name);
+    // const [desc, setDescription] = useState(description1)
+    // const [cuis, setCuisine] = useState(cuisine1)
+    // const [tag1, setTag] = useState(tag)
+    // const [groups, setGroupSize] = useState(size1)
+    // const [times, setTime1] = useState(time1)
     const [url, setURL] = useState("");
 
 
@@ -53,8 +53,9 @@ const EditEvent = (props) => {
     const starts = moment().hour(parseInt(startH)).minute(parseInt(startM));
     const ends = moment().hour(parseInt(endH)).minute(parseInt(endM));
 
+
     const [pictures, setPictures] = useState([]);
-    const [time, setTime] = useState();
+    // const [time, setTime] = useState();
 
     const { register, handleSubmit, errors, setValue } = useForm();
 
@@ -66,19 +67,25 @@ const EditEvent = (props) => {
         if (data["restaurant-name"] !== name) {
             db.ref("events/" + id + "/name").set(data["restaurant-name"])
         }
+
         if (data["cuisine"] !== cuisine1) {
             db.ref("events/" + id + "/cuisine").set(data["cuisine"])
         }
+
+
         if (data["description"] !== description1) {
             db.ref("events/" + id + "/description").set(data["description"])
         }
+
         if (data["tag"] !== tag) {
             db.ref("events/" + id + "/tag").set(data["tag"])
         }
+
         const peop = size1.split('/')[0]
         if (data["party-size"] !== size1) {
             db.ref("events/" + id + "/group-size").set(peop + "/" + data["party-size"])
         }
+
         var time_start = start;
         var time_end = end
 
@@ -86,6 +93,7 @@ const EditEvent = (props) => {
             time_start = String(data["time-start"]["_d"]);
             var arr = time_start.split(" ");
             time_start = arr[4].substring(0, 5);
+
         }
 
         if (data["time-end"] !== ends) {
@@ -117,9 +125,10 @@ const EditEvent = (props) => {
         register({ name: "date" }, { required: true });
         register({ name: "time-start" }, { required: true });
         register({ name: "time-end" }, { required: true });
-        setValue("time-start", starts)
-        setValue("time-end", ends)
-    }, []);
+        setValue("time-start", starts);
+        setValue("time-end", ends);
+        setValue("date", date);
+    }, [register, setValue, starts, ends, date]);
 
 
 
@@ -142,7 +151,7 @@ const EditEvent = (props) => {
                             <Field.Label> <Label> Restaurant Name </Label>
                                 <textarea defaultValue={props["resname"]} type="text" name="restaurant-name" ref={register({ required: true })}
                                     onChange={val => {
-                                        setRestName(val);
+                                        // setRestName(val);
                                     }} />
                                 <ErrorMessage errors={errors} name="restaurant-name" message="This is required" />
                             </Field.Label>
@@ -157,7 +166,7 @@ const EditEvent = (props) => {
                                     <Select.Container fullwidth={true}>
                                         <Select defaultValue={props["cuisine"]} name="cuisine" ref={register}
                                             onChange={val => {
-                                                setCuisine(val);
+                                                // setCuisine(val);
                                             }}>
                                             {Object.values(cuisine).map(value =>
                                                 <Select.Option key={value}> {value} </Select.Option>)
@@ -176,7 +185,7 @@ const EditEvent = (props) => {
                                     <Select.Container fullwidth={true}>
                                         <Select defaultValue={tag} name="tag" ref={register}
                                             onChange={val => {
-                                                setTag(val)
+                                                // setTag(val)
                                             }}>
                                             {Object.values(tags).map(value =>
                                                 <Select.Option key={value}> {value} </Select.Option>)
@@ -215,9 +224,9 @@ const EditEvent = (props) => {
                                         showSecond={false}
                                         inputReadOnly
                                         onChange={val => {
-                                            setTime(val);
+                                            // setTime(val);
                                             setValue("time-start", val);// Here we are setting the value for the registered input.
-                                            setTime1(val)
+                                            // setTime1(val)
                                         }}
 
                                     />
@@ -237,9 +246,9 @@ const EditEvent = (props) => {
                                         showSecond={false}
                                         inputReadOnly
                                         onChange={val => {
-                                            setTime(val);
+                                            // setTime(val);
                                             setValue("time-end", val);// Here we are setting the value for the registered input.
-                                            setTime1(val)
+                                            // setTime1(val)
                                         }}
                                     />
                                     <ErrorMessage errors={errors} name="time-end" message="This is required" />
@@ -258,7 +267,7 @@ const EditEvent = (props) => {
                                     <Select.Container fullwidth={true}>
                                         <Select defaultValue={size1.split('/')[1]} name="party-size" ref={register}
                                             onChange={val => {
-                                                setGroupSize(val);
+                                                // setGroupSize(val);
                                             }}>
                                             {party_size}
                                         </Select>
@@ -274,7 +283,7 @@ const EditEvent = (props) => {
                             <Field.Label> <Label> Description </Label>
                                 <textarea defaultValue={description1} type="text" name="description" ref={register}
                                     onChange={val => {
-                                        setDescription(val);
+                                        // setDescription(val);
                                     }} />
                             </Field.Label>
                         </Field>
@@ -333,4 +342,3 @@ const EditEvent = (props) => {
 
 
 export default EditEvent;
-

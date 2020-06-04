@@ -4,7 +4,6 @@ import { firebase } from '../../../src/shared/firebase.js'
 import "firebase/storage";
 import GuestListPopup from '../GuestListPopup';
 import JoinButton from "../JoinButton";
-// import ViewList from '../ViewList';
 import EditPopUp from "../EditPopUp";
 import { confirmAlert } from 'react-confirm-alert';
 
@@ -15,7 +14,6 @@ const ref = storage.child("img").child("buffalo.jpg");
 const Restaurant = ({ name, event, people }) => {
     console.log(event);
     const [image, setImage] = useState("");
-    const [joined, setJoined] = useState(false);
     const meals = ['Breakfast', 'Lunch', 'Dinner'];
 
     const matchMeal = duration => {
@@ -196,4 +194,3 @@ const Restaurant = ({ name, event, people }) => {
 
 
 export default Restaurant;
-
