@@ -100,38 +100,38 @@ const JoinButton = (props) => {
 
         }
 
-        else {
-            let temp = group;
-            var count = Object.keys(group).length;
-            temp[count + 1] = username;
-            // console.log("Joining");
-            // console.log(group);
-            setGroup(temp);
-            setValue("Quit");
-            var counting = Object.keys(group).length - 1;
+        // else {
+        //     let temp = group;
+        //     var count = Object.keys(group).length;
+        //     temp[count + 1] = username;
+        //     // console.log("Joining");
+        //     // console.log(group);
+        //     setGroup(temp);
+        //     setValue("Quit");
+        //     var counting = Object.keys(group).length - 1;
 
-            const toPush = {};
-            toPush[counting] = username;
+        //     const toPush = {};
+        //     toPush[counting] = username;
 
-            db.child('events').child(id).child("people").update(toPush)
-                .catch(error => {
-                    alert(error);
-                    console.log("can't update database")
-                });
+        //     db.child('events').child(id).child("people").update(toPush)
+        //         .catch(error => {
+        //             alert(error);
+        //             console.log("can't update database")
+        //         });
 
-            let [cur, max] = breakNumber(current);
-            cur = cur + 1;
-            const val = cur.toString() + "/" + max.toString();
-            const updatedSize = { "group-size": val };
+        //     let [cur, max] = breakNumber(current);
+        //     cur = cur + 1;
+        //     const val = cur.toString() + "/" + max.toString();
+        //     const updatedSize = { "group-size": val };
 
-            db.child('events').child(id).update(updatedSize)
-                .catch(error => {
-                    alert(error);
-                    console.log("can't update database")
-                });
+        //     db.child('events').child(id).update(updatedSize)
+        //         .catch(error => {
+        //             alert(error);
+        //             console.log("can't update database")
+        //         });
 
 
-        }
+        // }
     }
 
 
