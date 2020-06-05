@@ -19,4 +19,8 @@ test('rendering all restaurants', () => {
   const restaurant = getByTestId(container, "restaurants");
   // console.log(restaurant.textContent)
   expect(restaurant.textContent).toBe("Le PeepSchoolCuisine: Italian Date: 2020-04-20Attendee: 3/10  Time: Breakfast starts: 11:00 for 50minIf you enjoy brunches, this is the place for you. Why settle for iHop when you can go with NU CS students to get the finest French Toast in Evanston?!Remove Edit this eventJoin");
+
+  const join = getByTestId(container, "joinButton");
+  fireEvent.click(join);
+  expect(join.textContent).toBe("Quit");
 });
