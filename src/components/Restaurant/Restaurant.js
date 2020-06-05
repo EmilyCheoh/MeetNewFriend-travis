@@ -124,9 +124,9 @@ const Restaurant = ({ name, event, people }) => {
                     <img src={event.imageURL} style={{ width: 300, height: 200 }} alt="Logo" />
                 </Card.Image>
 
-                {/* <Card.Header>
+                <Card.Header data-cy="restaurantName">
                     {event["name"]}
-                </Card.Header> */}
+                </Card.Header>
 
                 <Card.Content>
                     <Field>
