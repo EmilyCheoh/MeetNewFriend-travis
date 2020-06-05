@@ -47,7 +47,7 @@ const UserEventList = ({ name, events, people }) => {
             </div>
 
             <div className="col-md-6 restaurant-info" alt="Max-width 100%">
-                <h3>Events you've joined</h3>
+                <h3 data-cy="joined">Events you've joined</h3>
                 <ul>
                     {
                         Object.values(joinedRestaurants(events)).map((e) => {
